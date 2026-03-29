@@ -2,13 +2,25 @@ const mongoose = require("mongoose");
 
 const userSchema = mongoose.Schema(
   {
-    first_name: { type: String, required: true, trim: true, minlength: 2 },
-    last_name: { type: String, required: true, trim: true, minlength: 2 },
+    first_name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 2,
+    },
+    last_name: {
+      type: String,
+      required: true,
+      trim: true,
+      minlength: 2,
+    },
     email: {
       type: String,
       required: true,
       trim: true,
       lowercase: true,
+      unique: true,
+      index: true,
       match: [/^\S+@\S+\.\S+$/, "Invalid Email"],
     },
     password: {
@@ -22,7 +34,7 @@ const userSchema = mongoose.Schema(
     is_active: { type: Boolean, default: true },
     role: {
       type: String,
-      enum: ["user", "admin"],
+      enum: ["user", "admin", "theater_owner"],
       default: "user",
       lowercase: true,
     },
