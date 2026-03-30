@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { refreshToken } = require("../controllers/auth.controller");
 
 const userSchema = mongoose.Schema(
   {
@@ -30,8 +31,23 @@ const userSchema = mongoose.Schema(
       select: false,
       minlength: 8,
     },
-    is_deleted: { type: Boolean, default: false },
-    is_active: { type: Boolean, default: true },
+    refreshToken: {
+      type: String,
+      default: null,
+      select: false,
+    },
+    refreshTokenExpiry: {
+      type: Date,
+      default: null,
+    },
+    is_deleted: {
+      type: Boolean,
+      default: false,
+    },
+    is_active: {
+      type: Boolean,
+      default: true,
+    },
     role: {
       type: String,
       enum: ["user", "admin", "theater_owner"],
