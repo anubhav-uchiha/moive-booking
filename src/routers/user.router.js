@@ -5,16 +5,14 @@ const userController = require("../controllers/user.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const roleMiddleware = require("../middlewares/role.middleware");
 
-// 👤 USER ROUTES
 router.get("/profile", authMiddleware, userController.getProfile);
 
 router.put("/profile", authMiddleware, userController.updateProfile);
 
 router.put("/change-password", authMiddleware, userController.changePassword);
 
-router.delete("/delete", authMiddleware, userController.deleteAccount);
+router.delete("/delete", authMiddleware, userController.softDeleteAccount);
 
-// 🛡️ ADMIN ROUTES
 router.get(
   "/",
   authMiddleware,
