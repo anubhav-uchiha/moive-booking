@@ -5,7 +5,6 @@ const controller = require("../controllers/theater.controller");
 const authMiddleware = require("../middlewares/auth.middleware");
 const roleMiddleware = require("../middlewares/role.middleware");
 
-// 🏢 OWNER ROUTES
 router.post(
   "/",
   authMiddleware,
@@ -34,7 +33,6 @@ router.delete(
   controller.deleteTheater,
 );
 
-// 🌍 PUBLIC ROUTES
 router.get("/", controller.getTheaters);
 router.get("/:id", controller.getTheaterById);
 

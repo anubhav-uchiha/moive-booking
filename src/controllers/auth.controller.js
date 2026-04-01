@@ -6,7 +6,7 @@ const {
 } = require("../utils/password.bcrypt");
 const generateToken = require("../utils/generate.token");
 const generateRefreshToken = require("../utils/generate.refresh.token");
-const hashToken = require("../utils/hask.token");
+const hashToken = require("../utils/hash.token");
 
 const registerUser = async (req, res, next) => {
   try {
